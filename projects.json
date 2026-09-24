@@ -1,0 +1,75 @@
+{
+  "updated": "2025-07-09T13:00:00Z",
+  "projects": [
+    {
+      "name": "Load Manager TMS",
+      "url": "https://loadmanager.com",
+      "icon": "🚛",
+      "status": "on-track",
+      "color": "blue",
+      "progress": 85,
+      "notes": ["Core TMS product — ongoing customer features", "Side projects managed by Hermes"],
+      "last_updated": "2025-07-09"
+    },
+    {
+      "name": "Locate My Freight",
+      "url": "https://locatemyfreight.com",
+      "icon": "📱",
+      "status": "on-track",
+      "color": "green",
+      "progress": 70,
+      "notes": ["Mobile app for freight tracking"],
+      "last_updated": "2025-07-09"
+    },
+    {
+      "name": "Onboard Carrier",
+      "url": "https://onboardcarrier.com",
+      "icon": "📋",
+      "status": "planning",
+      "color": "purple",
+      "progress": 20,
+      "notes": ["Site registered but not live yet"],
+      "last_updated": "2025-07-09"
+    },
+    {
+      "name": "Carrier Lookout",
+      "url": "https://CarrierLookout.com",
+      "icon": "🔍",
+      "status": "planning",
+      "color": "cyan",
+      "progress": 10,
+      "notes": ["Domain acquired — site not live"],
+      "last_updated": "2025-07-09"
+    },
+    {
+      "name": "Load Manager EDI",
+      "url": "https://loadmanageredi.com",
+      "icon": "📡",
+      "status": "on-track",
+      "color": "orange",
+      "progress": 60,
+      "notes": ["X12: 204, 990, 214, 210 motor carrier flow via Mirth Connect"],
+      "last_updated": "2025-07-09"
+    },
+    {
+      "name": "LoadBoardXchange",
+      "url": "https://LoadBoardXchange.com",
+      "icon": "📦",
+      "status": "in-progress",
+      "color": "pink",
+      "progress": 30,
+      "notes": ["Gathering available loads from existing LMTMS customers"],
+      "last_updated": "2025-07-09"
+    },
+    {
+      "name": "Legacy MS Access Apps",
+      "url": null,
+      "icon": "🗄️",
+      "status": "waiting",
+      "color": "yellow",
+      "progress": 40,
+      "notes": ["2 apps built in MS Access (.accdb) with SQL Server backend"],
+      "last_updated": "2025-07-09"
+    }
+  ]
+}

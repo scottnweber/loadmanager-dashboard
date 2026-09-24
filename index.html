@@ -353,87 +353,21 @@
       'legacy': '🗄️',
     };
     
-    // ── Project Data ──
-    // Update this section or load from projects.json for dynamic updates
-    const projects = [
-      {
-        name: "Load Manager TMS",
-        url: "https://loadmanager.com",
-        icon: "🚛",
-        status: "on-track",
-        color: "blue",
-        progress: 85,
-        notes: [
-          "Core TMS product — ongoing customer features",
-          "Side projects managed by Hermes"
-        ]
-      },
-      {
-        name: "Locate My Freight",
-        url: "https://locatemyfreight.com",
-        icon: "📱",
-        status: "on-track",
-        color: "green",
-        progress: 70,
-        notes: [
-          "Mobile app for freight tracking"
-        ]
-      },
-      {
-        name: "Onboard Carrier",
-        url: "https://onboardcarrier.com",
-        icon: "📋",
-        status: "planning",
-        color: "purple",
-        progress: 20,
-        notes: [
-          "Site registered but not live yet"
-        ]
-      },
-      {
-        name: "Carrier Lookout",
-        url: "https://CarrierrLookout.com",
-        icon: "🔍",
-        status: "planning",
-        color: "cyan",
-        progress: 10,
-        notes: [
-          "Domain acquired — site not live"
-        ]
-      },
-      {
-        name: "Load Manager EDI",
-        url: "https://loadmanageredi.com",
-        icon: "📡",
-        status: "on-track",
-        color: "orange",
-        progress: 60,
-        notes: [
-          "X12: 204, 990, 214, 210 motor carrier flow via Mirth Connect"
-        ]
-      },
-      {
-        name: "LoadBoardXchange",
-        url: "https://LoadBoardXchange.com",
-        icon: "📦",
-        status: "in-progress",
-        color: "pink",
-        progress: 30,
-        notes: [
-          "Gathering available loads from existing LMTMS customers"
-        ]
-      },
-      {
-        name: "Legacy MS Access Apps",
-        icon: "🗄️",
-        status: "waiting",
-        color: "yellow",
-        progress: 40,
-        notes: [
-          "2 apps built in MS Access (.accdb) with SQL Server backend"
-        ]
+    // ── Load from projects.json ──
+    let projects = [];
+    
+    async function loadProjects() {
+      try {
+        const res = await fetch('projects.json?t=' + Date.now());
+        const data = await res.json();
+        projects = data.projects;
+        renderDashboard(data.updated);
+      } catch (e) {
+        document.getElementById('lastUpdated').textContent = 'Failed to load data';
+        document.getElementById('summaryCards').innerHTML = '<div style="color:var(--accent-red);padding:16px;">Error loading projects. Update projects.json and push to repo.</div>';
+        document.getElementById('projectsGrid').innerHTML = '';
       }
-    ];
+    }
     
     function formatDate(ts) {
       if (!ts) return 'Not yet updated';
@@ -520,10 +454,14 @@
       }).join('');
     }
     
-    // ── Render ──
-    document.getElementById('lastUpdated').textContent = formatDate(Date.now());
-    document.getElementById('summaryCards').innerHTML = renderSummary(projects);
-    document.getElementById('projectsGrid').innerHTML = renderProjects(projects);
+    function renderDashboard(updatedAt) {
+      document.getElementById('lastUpdated').textContent = formatDate(updatedAt);
+      document.getElementById('summaryCards').innerHTML = renderSummary(projects);
+      document.getElementById('projectsGrid').innerHTML = renderProjects(projects);
+    }
+    
+    // ── Init ──
+    loadProjects();
   </script>
 </body>
 </html>
